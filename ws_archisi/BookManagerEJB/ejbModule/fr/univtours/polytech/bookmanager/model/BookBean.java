@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "BOOKS")
+@Table(name = "BOOK")
 public class BookBean implements Serializable {
 
 	/**
