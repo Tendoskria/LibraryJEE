@@ -19,13 +19,13 @@ public class BookBean implements Serializable {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Integer idBook;
-	private String BookTitle;
+	private String bookTitle;
 	
 	public String getBookTitle() {
-		return BookTitle;
+		return bookTitle;
 	}
 	public void setBookTitle(String bookTitle) {
-		BookTitle = bookTitle;
+		bookTitle = bookTitle;
 	}
 	
 }
