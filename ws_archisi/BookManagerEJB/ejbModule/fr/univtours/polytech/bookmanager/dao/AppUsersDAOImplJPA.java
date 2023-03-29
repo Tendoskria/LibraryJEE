@@ -2,12 +2,14 @@ package fr.univtours.polytech.bookmanager.dao;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import fr.univtours.polytech.bookmanager.model.AppUserBean;
 
+@Stateless
 public class AppUsersDAOImplJPA implements AppUsersDAO{
 
 	@PersistenceContext(unitName = "BookManagerEJB")

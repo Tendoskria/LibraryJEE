@@ -19,26 +19,19 @@ public class GenreBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
-	private Integer IdGenre;
-	private String GenreName;
+	private Integer idGenre;
+	private String genreName;
 	
 	public Integer getIdGenre() {
-		return IdGenre;
-	}
-	public void setIdGenre(Integer idGenre) {
-		IdGenre = idGenre;
+		return idGenre;
 	}
 	public String getGenreName() {
-		return GenreName;
+		return genreName;
 	}
 	public void setGenreName(String genreName) {
-		GenreName = genreName;
+		this.genreName = genreName;
 	}
-	
-	
-	
-	
-	
-	
-	
+	public void setIdGenre(Integer idGenre) {
+		this.idGenre = idGenre;
+	}
 }

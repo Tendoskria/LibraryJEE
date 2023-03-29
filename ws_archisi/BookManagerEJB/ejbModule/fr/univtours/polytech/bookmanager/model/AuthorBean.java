@@ -20,27 +20,27 @@ public class AuthorBean  implements Serializable  {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
-	private Integer IdAuthor;
-	private String FirstNameAuthor;
-	private String LastNameAuthor;
+	private Integer idAuthor;
+	private String firstNameAuthor;
+	private String lastNameAuthor;
 	
-	public Integer getIdAuthor() {
-		return IdAuthor;
+	public Integer getidAuthor() {
+		return idAuthor;
 	}
-	public void setIdAuthor(Integer idAuthor) {
-		IdAuthor = idAuthor;
+	public String getfirstNameAuthor() {
+		return firstNameAuthor;
 	}
-	public String getFirstNameAuthor() {
-		return FirstNameAuthor;
+	public String getlastNameAuthor() {
+		return lastNameAuthor;
 	}
-	public void setFirstNameAuthor(String firstNameAuthor) {
-		FirstNameAuthor = firstNameAuthor;
+	public void setidAuthor(Integer idAuthor) {
+		this.idAuthor = idAuthor;
 	}
-	public String getLastNameAuthor() {
-		return LastNameAuthor;
+	public void setfirstNameAuthor(String firstNameAuthor) {
+		this.firstNameAuthor = firstNameAuthor;
 	}
-	public void setLastNameAuthor(String lastNameAuthor) {
-		LastNameAuthor = lastNameAuthor;
+	public void setlastNameAuthor(String lastNameAuthor) {
+		this.lastNameAuthor = lastNameAuthor;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;

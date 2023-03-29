@@ -33,7 +33,7 @@
 				<th>Available</th>
 				<c:forEach items="${requestScope.BOOKS_LIST}" var="book">
 					<tr>
-						<td>${book.bookName}</td>
+						<td>${book.bookTitle}</td>
 					</tr>
 				</c:forEach>
 			</tr>

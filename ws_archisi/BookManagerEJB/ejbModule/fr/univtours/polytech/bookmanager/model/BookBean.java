@@ -21,11 +21,17 @@ public class BookBean implements Serializable {
 	private Integer idBook;
 	private String bookTitle;
 	
+	public Integer getIdBook() {
+		return idBook;
+	}
 	public String getBookTitle() {
 		return bookTitle;
 	}
+	public void setIdBook(Integer idBook) {
+		this.idBook = idBook;
+	}
 	public void setBookTitle(String bookTitle) {
-		bookTitle = bookTitle;
+		this.bookTitle = bookTitle;
 	}
 	
 }

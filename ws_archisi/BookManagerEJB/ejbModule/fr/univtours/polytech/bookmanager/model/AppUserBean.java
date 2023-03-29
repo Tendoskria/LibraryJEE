@@ -19,31 +19,31 @@ public class AppUserBean implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
-	private Integer IdUser;
-	private String LastNameUser;
-	private String FirstNameUser;
+	private Integer idUser;
+	private String lastNameUser;
+	private String firstNameUser;
 	private boolean privilege;
 	
-	public Integer getIdUser() {
-		return IdUser;
+	public Integer getidUser() {
+		return idUser;
 	}
-	public void setIdUser(Integer idUser) {
-		IdUser = idUser;
+	public String getlastNameUser() {
+		return lastNameUser;
 	}
-	public String getLastNameUser() {
-		return LastNameUser;
+	public String getfirstNameUser() {
+		return firstNameUser;
 	}
-	public void setLastNameUser(String lastNameUser) {
-		LastNameUser = lastNameUser;
-	}
-	public String getFirstNameUser() {
-		return FirstNameUser;
-	}
-	public void setFirstNameUser(String firstNameUser) {
-		FirstNameUser = firstNameUser;
-	}
-	public boolean isPrivilege() {
+	public boolean getPrivilege() {
 		return privilege;
+	}
+	public void setidUser(Integer idUser) {
+		this.idUser = idUser;
+	}
+	public void setlastNameUser(String lastNameUser) {
+		this.lastNameUser = lastNameUser;
+	}
+	public void setfirstNameUser(String firstNameUser) {
+		this.firstNameUser = firstNameUser;
 	}
 	public void setPrivilege(boolean privilege) {
 		this.privilege = privilege;
