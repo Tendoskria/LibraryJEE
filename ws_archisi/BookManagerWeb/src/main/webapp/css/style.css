@@ -1,0 +1,84 @@
+@charset "UTF-8";
+/* Réinitialiser les styles par défaut */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, sans-serif;
+}
+
+/* Style pour le header */
+header {
+	background-color: #333;
+	color: #fff;
+}
+
+/* Style pour le menu de navigation */
+nav ul {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1em;
+}
+
+nav ul li {
+	list-style: none;
+}
+
+nav ul li a {
+	color: #fff;
+	text-decoration: none;
+	font-size: 1.2em;
+	transition: color 0.2s ease-in-out;
+}
+
+nav ul li a:hover {
+	color: #f0f0f0;
+}
+
+/* Style pour le formulaire de connexion */
+nav form {
+	display: flex;
+	align-items: center;
+	margin-right: 1em;
+}
+
+nav form input[type="text"],
+nav form input[type="password"] {
+	padding: 0.5em;
+	border-radius: 0.5em;
+	border: none;
+	margin-right: 0.5em;
+}
+
+nav form input[type="submit"] {
+	background-color: #fff;
+	color: #333;
+	border: none;
+	border-radius: 0.5em;
+	padding: 0.5em 1em;
+	cursor: pointer;
+	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+nav form input[type="submit"]:hover {
+	background-color: #f0f0f0;
+	color: #333;
+}
+
+/* Style pour le contenu de la page */
+main {
+	margin: 2em;
+}
+
+/* Style pour les liens */
+a {
+	color: #333;
+	text-decoration: none;
+	font-weight: bold;
+	transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+	color: #f0f0f0;
+}
