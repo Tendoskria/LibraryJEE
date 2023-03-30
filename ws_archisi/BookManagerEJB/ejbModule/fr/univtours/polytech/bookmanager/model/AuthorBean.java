@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Table(name= "AUTHOR")
 public class AuthorBean  implements Serializable  {
 
-	/**
+	/**O
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
@@ -26,7 +26,7 @@ public class AuthorBean  implements Serializable  {
 	private String firstNameAuthor;
 	private String lastNameAuthor;
 	
-    @OneToMany( targetEntity=BookBean.class, mappedBy="author" )
+    @OneToMany( targetEntity=BookBean.class, mappedBy="author")
 	private List<BookBean> books = new ArrayList<>();
 	
 	public Integer getidAuthor() {

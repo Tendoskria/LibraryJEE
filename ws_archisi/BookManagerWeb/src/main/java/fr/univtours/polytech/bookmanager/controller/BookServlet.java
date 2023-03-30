@@ -16,8 +16,10 @@ import fr.univtours.polytech.bookmanager.business.AppUsersBusinessLocal;
 import fr.univtours.polytech.bookmanager.business.AuthorsBusinessLocal;
 import fr.univtours.polytech.bookmanager.business.BooksBusinessLocal;
 import fr.univtours.polytech.bookmanager.model.AppUserBean;
+import fr.univtours.polytech.bookmanager.business.GenresBusinessLocal;
 import fr.univtours.polytech.bookmanager.model.AuthorBean;
 import fr.univtours.polytech.bookmanager.model.BookBean;
+import fr.univtours.polytech.bookmanager.model.GenreBean;
 
 /**
  * Servlet implementation class BookServlet
@@ -35,6 +37,9 @@ public class BookServlet extends HttpServlet {
 	@EJB
 	private AppUsersBusinessLocal appUsersBusinessLocal;
 	
+	@EJB
+	private GenresBusinessLocal genresBusinessLocal;
+	
 	private static String USERNAME = "USERNAME";
 	private static String LOGIN_INCORRECT = "LOGIN_INCORRECT";
 
@@ -43,12 +48,22 @@ public class BookServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<BookBean> books = this.booksBusinessLocal.getBooksList();
-	    request.setAttribute("BOOKS_LIST", books);
-
-	    List<AuthorBean> authors = this.authorsBusinessLocal.getAuthorsList();
-	    request.setAttribute("AUTHOR_LIST", authors);
+		//Get the content of the filters fields.
+		String titleFilter = request.getParameter("title");
+		String authorFilter = request.getParameter("author");
+		String genreFilter = request.getParameter("genre");
+		
+		// If every filters fields empty means that there is no research. Consequently, show every book in base.
+		if (titleFilter == null && authorFilter == null && genreFilter == null) {
+			List<BookBean> books = this.booksBusinessLocal.getBooksList();
+		    request.setAttribute("BOOKS_LIST", books);
+		}
+		else {
+			List<BookBean> books = this.booksBusinessLocal.getFilteredBook(titleFilter, authorFilter, genreFilter);
+		    request.setAttribute("BOOKS_LIST", books);
+		}
 	    
+		// Redirect the user on the same page with every parameters set previously.
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("book-manager.jsp");
 	    dispatcher.forward(request, response);
 	}
@@ -69,14 +84,12 @@ public class BookServlet extends HttpServlet {
 		else {
 			session.setAttribute(LOGIN_INCORRECT, "Login/Password incorrect");
 		}
-		
-		
+				
 		String username = request.getParameter("username");
 		request.setAttribute("USERNAME", username);
 		
 		List<BookBean> books = this.booksBusinessLocal.getBooksList();
 	    request.setAttribute("BOOKS_LIST", books);
 	 	response.sendRedirect("book-manager");
-		//request.getRequestDispatcher("book-manager.jsp").forward(request, response);
 	}
 }

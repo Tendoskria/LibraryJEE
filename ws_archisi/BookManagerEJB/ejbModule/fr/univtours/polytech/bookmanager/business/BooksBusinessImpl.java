@@ -14,29 +14,28 @@ public class BooksBusinessImpl implements BooksBusinessLocal, BooksBusinessRemot
 	@Inject
 	private BooksDAO dao;
 
-	
 	@Override
 	public List<BookBean> getBooksList() {
 		return dao.getBooksList();
 	}
 
 	@Override
-	public BookBean getBean(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public BookBean getBook(Integer id) {
+		return dao.getBook(id);
 	}
 
 	@Override
 	public void insertBook(BookBean book) {
-		// TODO Auto-generated method stub
-		
+		dao.insertBook(book);
 	}
 
 	@Override
 	public void updateBook(BookBean book) {
 		// TODO Auto-generated method stub
-		
 	}
 	
-	
+	@Override
+	public List<BookBean> getFilteredBook(String titleFilter, String authorFilter, String genreFilter){
+		return dao.getFilteredBook(titleFilter, authorFilter, genreFilter);
+	}
 }

@@ -13,4 +13,6 @@ public interface BooksDAO {
 	public void insertBook(BookBean book);
 
 	public void updateBook(BookBean book);
+	
+	public List<BookBean> getFilteredBook(String titleFilter, String authorFilter, String genreFilter);
 }

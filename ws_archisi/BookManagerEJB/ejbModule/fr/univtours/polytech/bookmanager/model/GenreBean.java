@@ -1,11 +1,14 @@
 package fr.univtours.polytech.bookmanager.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +16,7 @@ import javax.persistence.Table;
 public class GenreBean implements Serializable {
 
 	
+
 	/**
 	 * 
 	 */
@@ -22,11 +26,17 @@ public class GenreBean implements Serializable {
 	private Integer idGenre;
 	private String genreName;
 	
+	@OneToMany( targetEntity=BookBean.class, mappedBy="genre")
+	private List<BookBean> books = new ArrayList<>();
+	
 	public Integer getIdGenre() {
 		return idGenre;
 	}
 	public String getGenreName() {
 		return genreName;
+	}
+	public List<BookBean> getBooks() {
+		return books;
 	}
 	public void setGenreName(String genreName) {
 		this.genreName = genreName;

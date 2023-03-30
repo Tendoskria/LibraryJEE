@@ -14,6 +14,9 @@ import javax.persistence.Table;
 @Table(name = "BOOK")
 public class BookBean implements Serializable {
 
+
+	
+
 	/**
 	 * 
 	 */
@@ -25,6 +28,10 @@ public class BookBean implements Serializable {
 	
     @ManyToOne @JoinColumn(name="idAuthor", nullable=false)
 	private AuthorBean author;
+	
+
+    @ManyToOne @JoinColumn(name="idGenre", nullable=false)
+	private GenreBean genre;
 	
 	public Integer getIdBook() {
 		return idBook;
@@ -44,4 +51,13 @@ public class BookBean implements Serializable {
 	public void setAuthor(AuthorBean author) {
 		this.author = author;
 	}
+	public GenreBean getGenre() {
+		return genre;
+	}
+	public void setGenre(GenreBean genre) {
+		this.genre = genre;
+	}
+	
+	
+	
 }
