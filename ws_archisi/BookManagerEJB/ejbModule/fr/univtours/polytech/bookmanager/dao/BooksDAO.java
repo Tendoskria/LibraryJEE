@@ -8,9 +8,9 @@ public interface BooksDAO {
 
 	public List<BookBean> getBooksList();
 
-	public BookBean getNote(Integer id);
+	public BookBean getBook(Integer id);
 
-	public void insertNote(BookBean note);
+	public void insertBook(BookBean book);
 
-	public void updateNote(BookBean note);
+	public void updateBook(BookBean book);
 }

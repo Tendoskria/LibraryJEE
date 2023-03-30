@@ -24,20 +24,20 @@ public class BooksDAOImplJPA implements BooksDAO {
 	}
 
 	@Override
-	public BookBean getNote(Integer id) {
+	public BookBean getBook(Integer id) {
 		// TODO Auto-generated method stub
 		BookBean note = (BookBean) entityManager.find(BookBean.class, id);
 		return note;
 	}
 
 	@Override
-	public void insertNote(BookBean note) {
+	public void insertBook(BookBean book) {
 		// TODO Auto-generated method stub
-		entityManager.persist(note);
+		entityManager.persist(book);
 	}
 
 	@Override
-	public void updateNote(BookBean note) {
+	public void updateBook(BookBean book) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -1,11 +1,14 @@
 package fr.univtours.polytech.bookmanager.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,7 +18,6 @@ public class AuthorBean  implements Serializable  {
 	/**
 	 * 
 	 */
-	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -23,6 +25,9 @@ public class AuthorBean  implements Serializable  {
 	private Integer idAuthor;
 	private String firstNameAuthor;
 	private String lastNameAuthor;
+	
+    @OneToMany( targetEntity=BookBean.class, mappedBy="author" )
+	private List<BookBean> books = new ArrayList<>();
 	
 	public Integer getidAuthor() {
 		return idAuthor;
@@ -32,6 +37,9 @@ public class AuthorBean  implements Serializable  {
 	}
 	public String getlastNameAuthor() {
 		return lastNameAuthor;
+	}
+	public List<BookBean> getBooks() {
+		return books;
 	}
 	public void setidAuthor(Integer idAuthor) {
 		this.idAuthor = idAuthor;
@@ -44,7 +52,5 @@ public class AuthorBean  implements Serializable  {
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}
-
-	
+	}	
 }
