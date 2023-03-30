@@ -10,12 +10,24 @@
 </head>
 <body>
 	<header>
-		<h1>Welcome <%=session.getAttribute("USERNAME") %></h1>
+		<h1>
+			<c:if test="${not empty sessionScope.USERNAME}"> 
+				Welcome ${ sessionScope.USERNAME }
+			</c:if>
+			<c:if test="${empty sessionScope.USERNAME}"> 
+				Welcome
+			</c:if>
+		</h1>
 		<nav>
 			<ul>
 				<li><a href="#">Home</a></li>
 				<li>
 					<form action="book-manager" method="post">
+						<p>
+							<c:if test="${not empty sessionScope.LOGIN_INCORRECT}"> 
+								${ sessionScope.LOGIN_INCORRECT }
+							</c:if>
+						</p>
 						<input type="text" name="username" placeholder="Username">
 						<input type="password" name="password" placeholder="Password">
 						<input type="submit" value="Connection">
@@ -34,14 +46,12 @@
 				<c:forEach items="${requestScope.BOOKS_LIST}" var="book">
 					<tr>
 						<td>${book.bookTitle}</td>
-						<td>${(book.author.firstNameAuthor)} ${(book.author.lastNameAuthor)}</td>
+						<td>${(book.author.firstNameAuthor)}
+							${(book.author.lastNameAuthor)}</td>
 					</tr>
 				</c:forEach>
 			</tr>
 		</table>
-	</fieldset>	
-	<c:if test="${empty session.getAttribute('USERNAME')}"> 
-		Welcome
-	</c:if>
+	</fieldset>
 </body>
 </html>

@@ -23,30 +23,44 @@ public class AppUserBean implements Serializable {
 	private String lastNameUser;
 	private String firstNameUser;
 	private boolean privilege;
+	private String login;
+	private String password;
 	
-	public Integer getidUser() {
+	public Integer getIdUser() {
 		return idUser;
 	}
-	public String getlastNameUser() {
+	public String getLastNameUser() {
 		return lastNameUser;
 	}
-	public String getfirstNameUser() {
+	public String getFirstNameUser() {
 		return firstNameUser;
 	}
 	public boolean getPrivilege() {
 		return privilege;
 	}
-	public void setidUser(Integer idUser) {
+	public String getLogin() {
+		return login;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setIdUser(Integer idUser) {
 		this.idUser = idUser;
 	}
-	public void setlastNameUser(String lastNameUser) {
+	public void setLastNameUser(String lastNameUser) {
 		this.lastNameUser = lastNameUser;
 	}
-	public void setfirstNameUser(String firstNameUser) {
+	public void setFirstNameUser(String firstNameUser) {
 		this.firstNameUser = firstNameUser;
 	}
 	public void setPrivilege(boolean privilege) {
 		this.privilege = privilege;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;

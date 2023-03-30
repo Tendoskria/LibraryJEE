@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.univtours.polytech.bookmanager.business.AppUsersBusinessLocal;
 import fr.univtours.polytech.bookmanager.business.AuthorsBusinessLocal;
 import fr.univtours.polytech.bookmanager.business.BooksBusinessLocal;
+import fr.univtours.polytech.bookmanager.model.AppUserBean;
 import fr.univtours.polytech.bookmanager.model.AuthorBean;
 import fr.univtours.polytech.bookmanager.model.BookBean;
 
@@ -30,7 +32,12 @@ public class BookServlet extends HttpServlet {
 	@EJB
 	private AuthorsBusinessLocal authorsBusinessLocal;
 	
+	@EJB
+	private AppUsersBusinessLocal appUsersBusinessLocal;
+	
 	private static String USERNAME = "USERNAME";
+	private static String LOGIN_INCORRECT = "LOGIN_INCORRECT";
+
 	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -48,15 +55,19 @@ public class BookServlet extends HttpServlet {
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	        throws ServletException, IOException {
-		
 		HttpSession session = request.getSession();
+
+		AppUserBean user = new AppUserBean();
+		user.setLogin(request.getParameter("username"));
+		user.setPassword(request.getParameter("password"));
 		
-		if (session.getAttribute(USERNAME) != null) {
+		if (appUsersBusinessLocal.getAppUserIfExist(user.getLogin(), user.getPassword()) != null) {
 			String username = request.getParameter("username");
 			session.setAttribute(USERNAME, username);
+			session.setAttribute(LOGIN_INCORRECT, "");
 		}
 		else {
-			session.setAttribute(USERNAME, "Anonymous");
+			session.setAttribute(LOGIN_INCORRECT, "Login/Password incorrect");
 		}
 		
 		
