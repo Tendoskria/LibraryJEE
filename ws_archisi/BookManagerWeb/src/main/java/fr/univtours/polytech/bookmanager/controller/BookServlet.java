@@ -14,8 +14,10 @@ import javax.servlet.http.HttpSession;
 
 import fr.univtours.polytech.bookmanager.business.AuthorsBusinessLocal;
 import fr.univtours.polytech.bookmanager.business.BooksBusinessLocal;
+import fr.univtours.polytech.bookmanager.business.GenresBusinessLocal;
 import fr.univtours.polytech.bookmanager.model.AuthorBean;
 import fr.univtours.polytech.bookmanager.model.BookBean;
+import fr.univtours.polytech.bookmanager.model.GenreBean;
 
 /**
  * Servlet implementation class BookServlet
@@ -30,6 +32,9 @@ public class BookServlet extends HttpServlet {
 	@EJB
 	private AuthorsBusinessLocal authorsBusinessLocal;
 	
+	@EJB
+	private GenresBusinessLocal genresBusinessLocal;
+	
 	private static String USERNAME = "USERNAME";
 	
 	/**
@@ -41,6 +46,9 @@ public class BookServlet extends HttpServlet {
 
 	    List<AuthorBean> authors = this.authorsBusinessLocal.getAuthorsList();
 	    request.setAttribute("AUTHOR_LIST", authors);
+	    
+	    List<GenreBean> genres = this.genresBusinessLocal.getGenresList();
+	    request.setAttribute("GENRE_LIST", authors);
 	    
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("book-manager.jsp");
 	    dispatcher.forward(request, response);

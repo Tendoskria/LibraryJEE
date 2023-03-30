@@ -35,6 +35,7 @@
 					<tr>
 						<td>${book.bookTitle}</td>
 						<td>${(book.author.firstNameAuthor)} ${(book.author.lastNameAuthor)}</td>
+						<td>${(book.genre.genreName)}</td>
 					</tr>
 				</c:forEach>
 			</tr>
