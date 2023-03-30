@@ -1,6 +1,9 @@
 package fr.univtours.polytech.bookmanager.model;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -33,6 +37,18 @@ public class BookBean implements Serializable {
     @ManyToOne @JoinColumn(name="idGenre", nullable=false)
 	private GenreBean genre;
 	
+    @OneToMany(mappedBy = "book")
+    private List<BorrowDateBean> borrowDates = new ArrayList<>();
+
+    public boolean isAvailable() {
+        for (BorrowDateBean borrowDate : borrowDates) {
+            if (borrowDate.getEndingDate().after(new Date())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 	public Integer getIdBook() {
 		return idBook;
 	}

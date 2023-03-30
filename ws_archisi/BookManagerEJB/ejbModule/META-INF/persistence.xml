@@ -5,6 +5,7 @@
 		<class>fr.univtours.polytech.bookmanager.model.AppUserBean</class>
 		<class>fr.univtours.polytech.bookmanager.model.AuthorBean</class>
 		<class>fr.univtours.polytech.bookmanager.model.BookBean</class>
+		<class>fr.univtours.polytech.bookmanager.model.BorrowDateBean</class>
 		<class>fr.univtours.polytech.bookmanager.model.GenreBean</class>
 		<properties>
 			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>

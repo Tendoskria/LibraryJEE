@@ -2,8 +2,10 @@ package fr.univtours.polytech.bookmanager.business;
 
 import java.util.List;
 
-import fr.univtours.polytech.bookmanager.model.GenreBean;
+import javax.ejb.Local;
 
+import fr.univtours.polytech.bookmanager.model.GenreBean;
+@Local
 public interface GenresBusinessLocal {
 
 	public List<GenreBean> getGenresList();
