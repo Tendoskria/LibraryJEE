@@ -45,6 +45,7 @@ public class BookServlet extends HttpServlet {
 	
 	private static String USERNAME = "USERNAME";
 	private static String LOGIN_INCORRECT = "LOGIN_INCORRECT";
+	private static String PRIVILEGE = "PRIVILEGE";
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -88,6 +89,9 @@ public class BookServlet extends HttpServlet {
 			String username = request.getParameter("username");
 			session.setAttribute(USERNAME, username);
 			session.setAttribute(LOGIN_INCORRECT, "");
+			user = appUsersBusinessLocal.getAppUser(username);
+			if (user.getPrivilege() == true) session.setAttribute(PRIVILEGE, "ADMIN");
+			else session.setAttribute(PRIVILEGE, "USER");
 		}
 		else {
 			session.setAttribute(LOGIN_INCORRECT, "Login/Password incorrect");

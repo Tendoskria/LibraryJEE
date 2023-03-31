@@ -38,4 +38,9 @@ public class AppUsersBusinessImpl implements AppUsersBusinessLocal, AppUsersBusi
 	public AppUserBean getAppUserIfExist(String login, String password) {
 		return dao.getAppUserIfExist(login, password);
 	}
+
+	@Override
+	public AppUserBean getAppUser(String login) {
+		return dao.getAppUser(login);
+	}
 }

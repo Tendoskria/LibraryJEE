@@ -4,9 +4,6 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 import fr.univtours.polytech.bookmanager.dao.AuthorsDAO;
 import fr.univtours.polytech.bookmanager.model.AuthorBean;

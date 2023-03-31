@@ -14,6 +14,7 @@ public class BookClient {
 	    // Cette objet business va nous permettre d'appeler les services métiers disponibles,
 	    // c'est-à-dire ceux définis dans l'interface distante : BooksBusinessRemote.
 	    BooksBusinessRemote business = getBusiness();
+	    System.out.println(business);
 	}
 
 	/**

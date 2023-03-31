@@ -6,7 +6,6 @@ import javax.ejb.Local;
 
 import fr.univtours.polytech.bookmanager.model.BookBean;
 import fr.univtours.polytech.bookmanager.model.BorrowDateBean;
-import fr.univtours.polytech.bookmanager.model.GenreBean;
 
 @Local
 public interface BorrowDatesBusinessLocal {

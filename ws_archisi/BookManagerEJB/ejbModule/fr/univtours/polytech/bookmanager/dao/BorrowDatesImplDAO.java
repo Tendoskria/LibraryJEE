@@ -63,5 +63,4 @@ public class BorrowDatesImplDAO implements BorrowDatesDAO{
 		}
 		return booksAvailable;
 	}
-
 }

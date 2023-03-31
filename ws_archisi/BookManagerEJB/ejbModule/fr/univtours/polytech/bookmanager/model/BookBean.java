@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,13 +16,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "BOOK")
 public class BookBean implements Serializable {
-
-
-	
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
@@ -32,26 +24,13 @@ public class BookBean implements Serializable {
 	
     @ManyToOne @JoinColumn(name="idAuthor", nullable=false)
 	private AuthorBean author;
-	
 
     @ManyToOne @JoinColumn(name="idGenre", nullable=false)
 	private GenreBean genre;
-	
-   
-    private String available;
-    
-    
-  
-	public String getAvailable() {
-		return available;
-	}
-	public void setAvailable(String available) {
-		this.available = available;
-	}
+
 	@OneToMany(targetEntity=BorrowDateBean.class,mappedBy = "book")
     private List<BorrowDateBean> borrowDates = new ArrayList<>();
 
-   
 
 	public Integer getIdBook() {
 		return idBook;

@@ -5,22 +5,12 @@ import java.sql.Date;
 
 public class BorrowDateId implements Serializable {
 
-	   
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
-
-	
     private Integer book;
-
-   
    
     private Date endingDate;
-   
-   
-  
+    
     private Date startingDate;
     
     @Override
@@ -33,8 +23,25 @@ public class BorrowDateId implements Serializable {
     	// TODO Auto-generated method stub
     	return super.equals(obj);
     }
-
-   
-
-    // getters and setters
+    public Integer getBook() {
+		return book;
+	}
+	public void setBook(Integer book) {
+		this.book = book;
+	}
+	public Date getEndingDate() {
+		return endingDate;
+	}
+	public void setEndingDate(Date endingDate) {
+		this.endingDate = endingDate;
+	}
+	public Date getStartingDate() {
+		return startingDate;
+	}
+	public void setStartingDate(Date startingDate) {
+		this.startingDate = startingDate;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 }

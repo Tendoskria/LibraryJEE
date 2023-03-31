@@ -4,7 +4,6 @@ import java.util.List;
 
 import fr.univtours.polytech.bookmanager.model.BookBean;
 import fr.univtours.polytech.bookmanager.model.BorrowDateBean;
-import fr.univtours.polytech.bookmanager.model.GenreBean;
 
 public interface BorrowDatesBusinessRemote {
 	public List<BorrowDateBean> getBorrowDatesList();
