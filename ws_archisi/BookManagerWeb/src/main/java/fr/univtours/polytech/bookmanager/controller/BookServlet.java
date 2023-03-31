@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import fr.univtours.polytech.bookmanager.business.AppUsersBusinessLocal;
 import fr.univtours.polytech.bookmanager.business.AuthorsBusinessLocal;
 import fr.univtours.polytech.bookmanager.business.BooksBusinessLocal;
-import fr.univtours.polytech.bookmanager.business.BorrowDatesBusinessLocal;
+import fr.univtours.polytech.bookmanager.business.BorrowsBusinessLocal;
 import fr.univtours.polytech.bookmanager.business.GenresBusinessLocal;
 import fr.univtours.polytech.bookmanager.model.AppUserBean;
 import fr.univtours.polytech.bookmanager.model.BookBean;
@@ -42,7 +42,7 @@ public class BookServlet extends HttpServlet {
 	
 	
 	@EJB
-	private BorrowDatesBusinessLocal borrowDatessBusinessLocal;
+	private BorrowsBusinessLocal borrowsBusinessLocal;
 	
 	private static String USERNAME = "USERNAME";
 	private static String LOGIN_INCORRECT = "LOGIN_INCORRECT";
@@ -65,14 +65,18 @@ public class BookServlet extends HttpServlet {
 			List<BookBean> books = this.booksBusinessLocal.getBooksList();
 		    request.setAttribute("BOOKS_LIST", books);
 		    
-		    List<BookBean> booksAvailable = this.borrowDatessBusinessLocal.getBooksAvailable();
+		    List<BookBean> booksAvailable = this.borrowsBusinessLocal.getBooksAvailable();
 		    request.setAttribute("BOOKS_AVAILABLE", booksAvailable);
+		    System.out.println("Livre dispo :");
+		    for (BookBean b : booksAvailable) {
+		    	System.out.println(b.getBookTitle());
+		    }
 		}
 		else {
 			List<BookBean> books = this.booksBusinessLocal.getFilteredBook(titleFilter, authorFilter, genreFilter);
 		    request.setAttribute("BOOKS_LIST", books);
 		    
-		    List<BookBean> booksAvailable = this.borrowDatessBusinessLocal.getBooksAvailable();
+		    List<BookBean> booksAvailable = this.borrowsBusinessLocal.getBooksAvailable();
 		    request.setAttribute("BOOKS_AVAILABLE", booksAvailable);
 		}
 	    

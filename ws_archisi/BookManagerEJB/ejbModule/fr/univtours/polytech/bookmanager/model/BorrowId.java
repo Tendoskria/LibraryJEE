@@ -3,7 +3,7 @@ package fr.univtours.polytech.bookmanager.model;
 import java.io.Serializable;
 import java.sql.Date;
 
-public class BorrowDateId implements Serializable {
+public class BorrowId implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

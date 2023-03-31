@@ -3,12 +3,12 @@ package fr.univtours.polytech.bookmanager.dao;
 import java.util.List;
 
 import fr.univtours.polytech.bookmanager.model.BookBean;
-import fr.univtours.polytech.bookmanager.model.BorrowDateBean;
+import fr.univtours.polytech.bookmanager.model.BorrowBean;
 
-public interface BorrowDatesDAO {
-	public List<BorrowDateBean> getBorrowDatesList();
+public interface BorrowsDAO {
+	public List<BorrowBean> getBorrowsList();
 	
-	public List<BorrowDateBean> getBorrowDatesForBook(int bookId);
+	public List<BorrowBean> getBorrowsForBook(int bookId);
 	
 	public List<BookBean> getBooksAvailable();
 	

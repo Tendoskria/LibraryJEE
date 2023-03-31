@@ -10,9 +10,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@IdClass(BorrowDateId.class)
-@Table(name = "BorrowDate")
-public class BorrowDateBean {
+@IdClass(BorrowId.class)
+@Table(name = "Borrow")
+public class BorrowBean {
 	@Id
 	private Date startingDate;
 	@Id

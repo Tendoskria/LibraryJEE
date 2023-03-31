@@ -51,12 +51,11 @@
 		</nav>
 	</header>
 	<form action="book-manager" method="get">
-		<label for="title">Title :</label> 
-		<input type="text" id="title" name="title" value="${param.title}"> 
-		<label for="author">Author :</label> 
-		<input type="text" id="author" name="author" value="${param.author}">
-		<label for="genre">Genre :</label> 
-		<select id="genre" name="genre">
+		<label for="title">Title :</label> <input type="text" id="title"
+			name="title" value="${param.title}"> <label for="author">Author
+			:</label> <input type="text" id="author" name="author"
+			value="${param.author}"> <label for="genre">Genre :</label> <select
+			id="genre" name="genre">
 			<option value="">-- Select a genre --</option>
 			<c:forEach var="genre" items="${requestScope.GENRES_LIST}">
 				<option value="${genre.genreName}">${genre.genreName}</option>
@@ -77,9 +76,14 @@
 							<td>${(book.author.firstNameAuthor)}
 								${(book.author.lastNameAuthor)}</td>
 							<td>${(book.genre.genreName)}</td>
-							<c:forEach items="${requestScope.BOOKS_AVAILABLE}" var="bookAvailable">
+							<c:forEach items="${requestScope.BOOKS_AVAILABLE}"
+								var="bookAvailable">
+								${bookAvailable.bookTitle}
 								<c:if test="${bookAvailable.bookTitle == book.bookTitle}">
 									<td>Yes</td>
+								</c:if>
+								<c:if test="${bookAvailable.bookTitle != book.bookTitle}">
+									<td>No</td>
 								</c:if>
 							</c:forEach>
 						</tr>

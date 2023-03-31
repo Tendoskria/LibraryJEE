@@ -5,14 +5,14 @@ import java.util.List;
 import javax.ejb.Local;
 
 import fr.univtours.polytech.bookmanager.model.BookBean;
-import fr.univtours.polytech.bookmanager.model.BorrowDateBean;
+import fr.univtours.polytech.bookmanager.model.BorrowBean;
 
 @Local
-public interface BorrowDatesBusinessLocal {
+public interface BorrowsBusinessLocal {
 
-	public List<BorrowDateBean> getBorrowDatesList();
+	public List<BorrowBean> getBorrowsList();
 
-	public List<BorrowDateBean> getBorrowDatesForBook(int bookId);
+	public List<BorrowBean> getBorrowsForBook(int bookId);
 
 	public boolean isBookAvailable(BookBean book);
 	

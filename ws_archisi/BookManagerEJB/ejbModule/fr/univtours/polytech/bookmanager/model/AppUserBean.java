@@ -30,11 +30,11 @@ public class AppUserBean implements Serializable {
 	private String login;
 	private String password;
 	
-	@OneToMany(targetEntity=BorrowDateBean.class, mappedBy = "user")
-	private List<BorrowDateBean> borrowDates = new ArrayList<>();
+	@OneToMany(targetEntity=BorrowBean.class, mappedBy = "user")
+	private List<BorrowBean> borrows = new ArrayList<>();
 
 	public boolean canBorrow() {
-		return borrowDates.size() < 5;
+		return borrows.size() < 5;
 	}
 
 	public Integer getIdUser() {

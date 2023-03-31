@@ -11,23 +11,23 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import fr.univtours.polytech.bookmanager.model.BookBean;
-import fr.univtours.polytech.bookmanager.model.BorrowDateBean;
+import fr.univtours.polytech.bookmanager.model.BorrowBean;
 
 @Stateless
-public class BorrowDatesImplDAO implements BorrowDatesDAO {
+public class BorrowsImplDAO implements BorrowsDAO {
 
 	@PersistenceContext(unitName = "BookManagerEJB")
 	private EntityManager entityManager;
 
 	@Override
-	public List<BorrowDateBean> getBorrowDatesList() {
-		Query query = entityManager.createQuery("select n from BorrowDateBean n");
+	public List<BorrowBean> getBorrowsList() {
+		Query query = entityManager.createQuery("select n from BorrowBean n");
 		return query.getResultList();
 	}
 
 	@Override
-	public List<BorrowDateBean> getBorrowDatesForBook(int bookId) {
-		Query query = entityManager.createQuery("SELECT b FROM BorrowDateBean b WHERE b.book.idBook = ?1");
+	public List<BorrowBean> getBorrowsForBook(int bookId) {
+		Query query = entityManager.createQuery("SELECT b FROM BorrowBean b WHERE b.book.idBook = ?1");
 		query.setParameter(1, bookId);
 		return query.getResultList();
 	}
@@ -44,10 +44,15 @@ public class BorrowDatesImplDAO implements BorrowDatesDAO {
 		Boolean flag = false;		
 		if (book != null) {
 			Date currentDate = new Date();
-			List<BorrowDateBean> borrowDates = getBorrowDatesForBook(book.getIdBook());
-			for (BorrowDateBean borrowDate : borrowDates) {
-				if (!borrowDate.getStartingDate().after(addDays(currentDate, -10))) {
-					// the book has been reserved in the last 10 days
+			List<BorrowBean> borrows = getBorrowsForBook(book.getIdBook());
+			for (BorrowBean borrow : borrows) {
+				System.out.println(borrow.getBook().getIdBook());
+				System.out.println(borrow.getStartingDate());
+				System.out.println(currentDate);
+				if (borrow.getStartingDate().before(currentDate) && borrow.getEndingDate().after(currentDate)) {
+					flag = false;
+				}
+				else {
 					flag = true;
 				}
 			}
@@ -57,10 +62,10 @@ public class BorrowDatesImplDAO implements BorrowDatesDAO {
 
 	public List<BookBean> getBooksAvailable() {
 		List<BookBean> booksAvailable = new ArrayList<BookBean>();
-		List<BorrowDateBean> borrowDateBeans = getBorrowDatesList();
-		for (BorrowDateBean borrowDateBean : borrowDateBeans) {
-			if (isBookAvailable(borrowDateBean.getBook())) {
-				booksAvailable.add(borrowDateBean.getBook());
+		List<BorrowBean> borrowBeans = getBorrowsList();
+		for (BorrowBean borrowBean : borrowBeans) {
+			if (isBookAvailable(borrowBean.getBook())) {
+				booksAvailable.add(borrowBean.getBook());
 			}
 		}
 		return booksAvailable;

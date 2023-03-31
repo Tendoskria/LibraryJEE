@@ -3,12 +3,12 @@ package fr.univtours.polytech.bookmanager.business;
 import java.util.List;
 
 import fr.univtours.polytech.bookmanager.model.BookBean;
-import fr.univtours.polytech.bookmanager.model.BorrowDateBean;
+import fr.univtours.polytech.bookmanager.model.BorrowBean;
 
-public interface BorrowDatesBusinessRemote {
-	public List<BorrowDateBean> getBorrowDatesList();
+public interface BorrowsBusinessRemote {
+	public List<BorrowBean> getBorrowsList();
 
-	public List<BorrowDateBean> getBorrowDatesForBook(int bookId);
+	public List<BorrowBean> getBorrowsForBook(int bookId);
 
 	public boolean isBookAvailable(BookBean book);
 	

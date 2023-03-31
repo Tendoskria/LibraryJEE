@@ -28,8 +28,8 @@ public class BookBean implements Serializable {
     @ManyToOne @JoinColumn(name="idGenre", nullable=false)
 	private GenreBean genre;
 
-	@OneToMany(targetEntity=BorrowDateBean.class,mappedBy = "book")
-    private List<BorrowDateBean> borrowDates = new ArrayList<>();
+	@OneToMany(targetEntity=BorrowBean.class,mappedBy = "book")
+    private List<BorrowBean> borrows = new ArrayList<>();
 
 
 	public Integer getIdBook() {
