@@ -51,12 +51,17 @@
 		</nav>
 	</header>
 	<form action="book-manager" method="get">
-		<label for="title">Title :</label> <input type="text" id="title"
-			name="title" value="${param.title}"> <label for="author">Author
-			:</label> <input type="text" id="author" name="author"
-			value="${param.author}"> <label for="genre">Genre :</label> <input
-			type="text" id="genre" name="genre" value="${param.genre}"> <input
-			type="submit" value="Search">
+		<label for="title">Title :</label> 
+		<input type="text" id="title" name="title" value="${param.title}"> 
+		<label for="author">Author :</label> 
+		<input type="text" id="author" name="author" value="${param.author}">
+		<label for="genre">Genre :</label> 
+		<select id="genre" name="genre">
+			<option value="">-- Select a genre --</option>
+			<c:forEach var="genre" items="${requestScope.GENRES_LIST}">
+				<option value="${genre.genreName}">${genre.genreName}</option>
+			</c:forEach>
+		</select> <input type="submit" value="Search">
 	</form>
 	<c:if test="${not empty requestScope.BOOKS_LIST}">
 		<fieldset>

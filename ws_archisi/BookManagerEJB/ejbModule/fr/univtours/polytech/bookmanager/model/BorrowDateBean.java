@@ -58,9 +58,4 @@ public class BorrowDateBean {
 	public void setUser(AppUserBean user) {
 		this.user = user;
 	}
-
-	// Constructeurs
-
-	// Getters and setters
-
 }

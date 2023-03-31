@@ -19,6 +19,7 @@ import fr.univtours.polytech.bookmanager.business.BorrowDatesBusinessLocal;
 import fr.univtours.polytech.bookmanager.business.GenresBusinessLocal;
 import fr.univtours.polytech.bookmanager.model.AppUserBean;
 import fr.univtours.polytech.bookmanager.model.BookBean;
+import fr.univtours.polytech.bookmanager.model.GenreBean;
 
 /**
  * Servlet implementation class BookServlet
@@ -56,6 +57,9 @@ public class BookServlet extends HttpServlet {
 		String authorFilter = request.getParameter("author");
 		String genreFilter = request.getParameter("genre");
 		
+		List<GenreBean> genres = this.genresBusinessLocal.getGenresList();
+	    request.setAttribute("GENRES_LIST", genres);
+
 		// If every filters fields empty means that there is no research. Consequently, show every book in base.
 		if (titleFilter == null && authorFilter == null && genreFilter == null) {
 			List<BookBean> books = this.booksBusinessLocal.getBooksList();
