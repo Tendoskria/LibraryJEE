@@ -10,7 +10,9 @@ public interface AppUsersDAO {
 
 	public AppUserBean getAppUser(Integer id);
 
-	public void insertNote(AppUserBean appUser);
+	public void insertAppUser(AppUserBean appUser);
 
-	public void updateNote(AppUserBean appUser);
+	public void updateAppUser(AppUserBean appUser);
+	
+	public AppUserBean getAppUserIfExist(String login, String password);
 }

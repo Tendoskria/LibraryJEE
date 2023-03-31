@@ -1,84 +1,100 @@
-@charset "UTF-8";
-/* Réinitialiser les styles par défaut */
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: Arial, sans-serif;
+/* Mise en page générale */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
 }
 
-/* Style pour le header */
+body h2 {
+	text-align: center;
+}
+
+/* En-tête */
 header {
-	background-color: #333;
-	color: #fff;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Style pour le menu de navigation */
 nav ul {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 1em;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-nav ul li {
-	list-style: none;
+nav li {
+  margin: 0 10px;
 }
 
-nav ul li a {
-	color: #fff;
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav p {
+	color: red;
 	text-decoration: none;
-	font-size: 1.2em;
-	transition: color 0.2s ease-in-out;
+	padding-right: 10px;
+}
+/* Formulaire de recherche */
+form {
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-nav ul li a:hover {
-	color: #f0f0f0;
+form input[type="text"],
+form input[type="password"],
+form input[type="submit"] {
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
 }
 
-/* Style pour le formulaire de connexion */
-nav form {
-	display: flex;
-	align-items: center;
-	margin-right: 1em;
+form input[type="submit"] {
+  background-color: #333;
+  color: white;
+  cursor: pointer;
 }
 
-nav form input[type="text"],
-nav form input[type="password"] {
-	padding: 0.5em;
-	border-radius: 0.5em;
-	border: none;
-	margin-right: 0.5em;
+form label {
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
 }
 
-nav form input[type="submit"] {
-	background-color: #fff;
-	color: #333;
-	border: none;
-	border-radius: 0.5em;
-	padding: 0.5em 1em;
-	cursor: pointer;
-	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+/* Tableau des résultats */
+fieldset {
+  margin: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-nav form input[type="submit"]:hover {
-	background-color: #f0f0f0;
-	color: #333;
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-/* Style pour le contenu de la page */
-main {
-	margin: 2em;
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
-/* Style pour les liens */
-a {
-	color: #333;
-	text-decoration: none;
-	font-weight: bold;
-	transition: color 0.2s ease-in-out;
+th {
+  background-color: #333;
+  color: white;
 }
 
-a:hover {
-	color: #f0f0f0;
+tr:hover {
+  background-color: #f2f2f2;
 }

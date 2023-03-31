@@ -18,29 +18,38 @@ public class BooksDAOImplJPA implements BooksDAO {
 
 	@Override
 	public List<BookBean> getBooksList() {
-		// TODO Auto-generated method stub
-		Query requete = entityManager.createQuery("select n from BookBean n");
-		return requete.getResultList();
+		Query query = entityManager.createQuery("select n from BookBean n");
+		return query.getResultList();
 	}
 
 	@Override
 	public BookBean getBook(Integer id) {
-		// TODO Auto-generated method stub
-		BookBean note = (BookBean) entityManager.find(BookBean.class, id);
-		return note;
+		BookBean book = (BookBean) entityManager.find(BookBean.class, id);
+		return book;
 	}
 
 	@Override
 	public void insertBook(BookBean book) {
-		// TODO Auto-generated method stub
 		entityManager.persist(book);
 	}
 
 	@Override
 	public void updateBook(BookBean book) {
 		// TODO Auto-generated method stub
-		
 	}
 
+	@Override
+	public List<BookBean> getFilteredBook(String titleFilter, String authorFilter, String genreFilter){
+		String sql = "SELECT b FROM BookBean b, AuthorBean a, GenreBean g "
+				+ "WHERE b.author.idAuthor = a.idAuthor AND b.genre.idGenre = g.idGenre AND "
+				+ "b.bookTitle LIKE ?1 AND a.firstNameAuthor LIKE ?2 AND g.genreName LIKE ?3";
+		
+		Query query = entityManager.createQuery(sql);
+		query.setParameter(1, "%" + titleFilter +"%");
+		query.setParameter(2, "%" + authorFilter +"%");
+		query.setParameter(3, "%" + genreFilter +"%");
+		return query.getResultList();
+	}
+	
 	
 }

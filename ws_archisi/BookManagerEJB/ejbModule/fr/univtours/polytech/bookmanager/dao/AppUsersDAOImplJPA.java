@@ -30,16 +30,23 @@ public class AppUsersDAOImplJPA implements AppUsersDAO{
 	}
 
 	@Override
-	public void insertNote(AppUserBean appUser) {
+	public void insertAppUser(AppUserBean appUser) {
 		// TODO Auto-generated method stub
 		entityManager.persist(appUser);
 	}
 
 	@Override
-	public void updateNote(AppUserBean appUser) {
-		// TODO Auto-generated method stub
-		
+	public void updateAppUser(AppUserBean appUser) {
+		// TODO Auto-generated method stub	
 	}
-
 	
+	public AppUserBean getAppUserIfExist(String login, String password) {
+		List<AppUserBean> appUserList = getAppUsersList();
+		for (AppUserBean appUser : appUserList) {
+			if (appUser.getLogin().equals(login) && appUser.getPassword().equals(password)) {
+				return appUser;
+			}
+		}
+		return null;
+	}	
 }
