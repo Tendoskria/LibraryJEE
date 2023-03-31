@@ -17,4 +17,6 @@ public interface AppUsersBusinessRemote {
 	public void updateAppUser(AppUserBean appUser);
 	
 	public AppUserBean getAppUserIfExist(String login, String password);
+	
+	public AppUserBean getAppUser(String login);
 }

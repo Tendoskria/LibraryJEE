@@ -1,0 +1,58 @@
+package fr.univtours.polytech.bookmanager.controller;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import fr.univtours.polytech.bookmanager.business.AppUsersBusinessLocal;
+import fr.univtours.polytech.bookmanager.business.AuthorsBusinessLocal;
+import fr.univtours.polytech.bookmanager.business.BooksBusinessLocal;
+import fr.univtours.polytech.bookmanager.business.GenresBusinessLocal;
+import fr.univtours.polytech.bookmanager.model.AppUserBean;
+import fr.univtours.polytech.bookmanager.model.BookBean;
+
+@WebServlet(name = "BookManagerServlet", urlPatterns = { "/book-manager-admin" })
+public class BookManagerServlet extends HttpServlet{
+
+	private static final long serialVersionUID = 1L;
+
+	@EJB
+	private BooksBusinessLocal booksBusinessLocal;
+
+	@EJB
+	private AuthorsBusinessLocal authorsBusinessLocal;
+
+	@EJB
+	private AppUsersBusinessLocal appUsersBusinessLocal;
+
+	@EJB
+	private GenresBusinessLocal genresBusinessLocal;
+
+	private static String USERNAME = "USERNAME";
+	private static String LOGIN_INCORRECT = "LOGIN_INCORRECT";
+	private static String PRIVILEGE = "PRIVILEGE";
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+
+		if (session.getAttribute(PRIVILEGE) == "ADMIN"){
+			RequestDispatcher dispatcher = request.getRequestDispatcher("book-manager-admin.jsp");
+			dispatcher.forward(request, response);
+		} else {
+			response.sendRedirect("book-manager");
+		}
+	}
+}

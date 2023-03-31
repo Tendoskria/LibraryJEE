@@ -40,6 +40,18 @@ nav p {
 	text-decoration: none;
 	padding-right: 10px;
 }
+.tabs {
+  margin: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tabs a{
+  text-decoration: none;
+  padding-right: 10px;
+}
+
 /* Formulaire de recherche */
 form {
   margin: 20px;

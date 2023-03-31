@@ -15,4 +15,6 @@ public interface AppUsersDAO {
 	public void updateAppUser(AppUserBean appUser);
 	
 	public AppUserBean getAppUserIfExist(String login, String password);
+
+	AppUserBean getAppUser(String login);
 }

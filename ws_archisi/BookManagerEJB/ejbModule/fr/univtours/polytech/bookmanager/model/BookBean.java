@@ -2,24 +2,20 @@ package fr.univtours.polytech.bookmanager.model;
 
 import java.io.Serializable;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "BOOK")
 public class BookBean implements Serializable {
-
-
-	
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
@@ -28,7 +24,6 @@ public class BookBean implements Serializable {
 	
     @ManyToOne @JoinColumn(name="idAuthor", nullable=false)
 	private AuthorBean author;
-	
 
     @ManyToOne @JoinColumn(name="idGenre", nullable=false)
 	private GenreBean genre;

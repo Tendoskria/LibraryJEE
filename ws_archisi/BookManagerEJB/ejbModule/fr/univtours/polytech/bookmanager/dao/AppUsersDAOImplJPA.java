@@ -24,11 +24,21 @@ public class AppUsersDAOImplJPA implements AppUsersDAO{
 
 	@Override
 	public AppUserBean getAppUser(Integer id) {
-		// TODO Auto-generated method stub
 		AppUserBean appUser = (AppUserBean) entityManager.find(AppUserBean.class, id);
 		return appUser;
 	}
 
+	@Override
+	public AppUserBean getAppUser(String login) {
+		List<AppUserBean> appUserList = getAppUsersList();
+		for (AppUserBean appUser : appUserList) {
+			if (appUser.getLogin().equals(login)) {
+				return appUser;
+			}
+		}
+		return null;
+	}	
+	
 	@Override
 	public void insertAppUser(AppUserBean appUser) {
 		// TODO Auto-generated method stub
@@ -40,6 +50,7 @@ public class AppUsersDAOImplJPA implements AppUsersDAO{
 		// TODO Auto-generated method stub	
 	}
 	
+	@Override
 	public AppUserBean getAppUserIfExist(String login, String password) {
 		List<AppUserBean> appUserList = getAppUsersList();
 		for (AppUserBean appUser : appUserList) {
