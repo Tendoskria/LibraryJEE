@@ -111,5 +111,6 @@ public class BookServlet extends HttpServlet {
 		List<BookBean> books = this.booksBusinessLocal.getBooksList();
 	    request.setAttribute("BOOKS_LIST", books);
 	 	response.sendRedirect("book-manager");
+	 
 	}
 }

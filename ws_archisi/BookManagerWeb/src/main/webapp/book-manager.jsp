@@ -24,12 +24,22 @@
 			</form>
 			<c:if test="${sessionScope.PRIVILEGE == 'USER'}">
 				<form action="book-manager-user" method="get">
-					<input type="submit" value="Profiles">
+					<input type="submit" value="Profile">
 				</form>
 			</c:if>
 			<c:if test="${sessionScope.PRIVILEGE == 'ADMIN'}">
 				<form action="book-manager-admin" method="get">
 					<input type="submit" value="Manage">
+				</form>
+			</c:if>
+			<c:if test="${sessionScope.PRIVILEGE == 'USER' }">
+				<form action="log-out-book-servlet" method="get">
+					<input type="submit" value="LogOut">
+				</form>
+			</c:if>
+			<c:if test="${sessionScope.PRIVILEGE == 'ADMIN' }">
+				<form action="log-out-book-servlet" method="get">
+					<input type="submit" value="LogOut">
 				</form>
 			</c:if>
 		</div>
@@ -70,6 +80,9 @@
 					<th>Author</th>
 					<th>Genre</th>
 					<th>Available</th>
+					<c:if test="${not empty sessionScope.USERNAME}"> 
+				<th>Book</th>
+			</c:if>
 					<c:forEach items="${requestScope.BOOKS_LIST}" var="book">
 						<tr>
 							<td>${book.bookTitle}</td>
