@@ -1,7 +1,6 @@
 package fr.univtours.polytech.bookmanager.dao;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -32,13 +31,6 @@ public class BorrowsImplDAO implements BorrowsDAO {
 		return query.getResultList();
 	}
 
-	public Date addDays(Date date, int days) {
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(date);
-		calendar.add(Calendar.DAY_OF_MONTH, days);
-		return calendar.getTime();
-	}	
-
 	@Override
 	public boolean isBookAvailable(BookBean book) {
 		Boolean flag = false;		
@@ -46,9 +38,6 @@ public class BorrowsImplDAO implements BorrowsDAO {
 			Date currentDate = new Date();
 			List<BorrowBean> borrows = getBorrowsForBook(book.getIdBook());
 			for (BorrowBean borrow : borrows) {
-				System.out.println(borrow.getBook().getIdBook());
-				System.out.println(borrow.getStartingDate());
-				System.out.println(currentDate);
 				if (borrow.getStartingDate().before(currentDate) && borrow.getEndingDate().after(currentDate)) {
 					flag = false;
 				}
@@ -59,7 +48,8 @@ public class BorrowsImplDAO implements BorrowsDAO {
 		}
 		return flag;
 	}
-
+	
+	@Override
 	public List<BookBean> getBooksAvailable() {
 		List<BookBean> booksAvailable = new ArrayList<BookBean>();
 		List<BorrowBean> borrowBeans = getBorrowsList();
@@ -69,5 +59,10 @@ public class BorrowsImplDAO implements BorrowsDAO {
 			}
 		}
 		return booksAvailable;
+	}
+	
+	@Override
+	public void insertBorrow(BorrowBean borrow) {
+		entityManager.merge(borrow);
 	}
 }

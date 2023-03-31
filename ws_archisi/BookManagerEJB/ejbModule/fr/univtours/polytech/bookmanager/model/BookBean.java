@@ -28,7 +28,7 @@ public class BookBean implements Serializable {
     @ManyToOne @JoinColumn(name="idGenre", nullable=false)
 	private GenreBean genre;
 
-	@OneToMany(targetEntity=BorrowBean.class,mappedBy = "book")
+	@OneToMany(targetEntity=BorrowBean.class, mappedBy = "book")
     private List<BorrowBean> borrows = new ArrayList<>();
 
 

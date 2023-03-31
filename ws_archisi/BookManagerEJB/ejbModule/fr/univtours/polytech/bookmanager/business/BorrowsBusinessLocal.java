@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Local;
 
+import fr.univtours.polytech.bookmanager.model.AppUserBean;
 import fr.univtours.polytech.bookmanager.model.BookBean;
 import fr.univtours.polytech.bookmanager.model.BorrowBean;
 
@@ -17,4 +18,6 @@ public interface BorrowsBusinessLocal {
 	public boolean isBookAvailable(BookBean book);
 	
 	public List<BookBean> getBooksAvailable();
+	
+	public void insertBorrow(BorrowBean borrow);
 }

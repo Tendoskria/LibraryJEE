@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import fr.univtours.polytech.bookmanager.dao.BorrowsDAO;
+import fr.univtours.polytech.bookmanager.model.AppUserBean;
 import fr.univtours.polytech.bookmanager.model.BookBean;
 import fr.univtours.polytech.bookmanager.model.BorrowBean;
 
@@ -33,5 +34,10 @@ public class BorrowsBusinessImpl implements BorrowsBusinessLocal, BorrowsBusines
 	@Override
 	public List<BookBean> getBooksAvailable(){
 		return dao.getBooksAvailable();
+	}
+	
+	@Override
+	public void insertBorrow(BorrowBean borrow) {
+		dao.insertBorrow(borrow);
 	}
 }

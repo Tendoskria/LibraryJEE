@@ -2,6 +2,7 @@ package fr.univtours.polytech.bookmanager.business;
 
 import java.util.List;
 
+import fr.univtours.polytech.bookmanager.model.AppUserBean;
 import fr.univtours.polytech.bookmanager.model.BookBean;
 import fr.univtours.polytech.bookmanager.model.BorrowBean;
 
@@ -13,4 +14,6 @@ public interface BorrowsBusinessRemote {
 	public boolean isBookAvailable(BookBean book);
 	
 	public List<BookBean> getBooksAvailable();
+	
+	public void insertBorrow(BorrowBean borrow);
 }

@@ -13,4 +13,6 @@ public interface BorrowsDAO {
 	public List<BookBean> getBooksAvailable();
 	
 	public boolean isBookAvailable(BookBean book);
+	
+	public void insertBorrow(BorrowBean borrow);
 }

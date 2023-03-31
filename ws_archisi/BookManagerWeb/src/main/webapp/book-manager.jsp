@@ -44,7 +44,7 @@
 						</p>
 						<input type="text" name="username" placeholder="Username">
 						<input type="password" name="password" placeholder="Password">
-						<input type="submit" value="Login">
+						<input type="submit" name="login" value="Login">
 					</form>
 				</li>
 			</ul>
@@ -70,19 +70,32 @@
 					<th>Author</th>
 					<th>Genre</th>
 					<th>Available</th>
+					<c:if test="${sessionScope.PRIVILEGE == 'USER'}">
+						<th>Borrow</th>
+					</c:if>
 					<c:forEach items="${requestScope.BOOKS_LIST}" var="book">
 						<tr>
 							<td>${book.bookTitle}</td>
 							<td>${(book.author.firstNameAuthor)}
 								${(book.author.lastNameAuthor)}</td>
 							<td>${(book.genre.genreName)}</td>
+							<c:if test="${empty requestScope.BOOKS_AVAILABLE}">
+									<td>No</td>
+								</c:if>
 							<c:forEach items="${requestScope.BOOKS_AVAILABLE}"
 								var="bookAvailable">
-								${bookAvailable.bookTitle}
-								<c:if test="${bookAvailable.bookTitle == book.bookTitle}">
+								<c:if test="${bookAvailable.idBook == book.idBook}">
 									<td>Yes</td>
+									<c:if test="${sessionScope.PRIVILEGE == 'USER'}">
+										<td>
+											<form action="book-manager" method="post">
+												<input type="hidden" name="borrow" value="${bookAvailable.idBook}"/>
+												<input type="submit" value="Borrow"/>
+											</form>
+										</td>
+									</c:if>
 								</c:if>
-								<c:if test="${bookAvailable.bookTitle != book.bookTitle}">
+								<c:if test="${bookAvailable.idBook != book.idBook}">
 									<td>No</td>
 								</c:if>
 							</c:forEach>
