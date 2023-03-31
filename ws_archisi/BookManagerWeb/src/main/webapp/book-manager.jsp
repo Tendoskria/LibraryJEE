@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Books</title>
+<title>Library</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -38,7 +38,7 @@
 	<form action="book-manager" method="get">
 		<label for="title">Title :</label> <input type="text" id="title" name="title" value="${param.title}"> 
 		<label for="author">Author :</label> <input	type="text" id="author" name="author" value="${param.author}"> 
-		<label for="genre">Genre:</label> <input type="text" id="genre" name="genre" value="${param.genre}"> 
+		<label for="genre">Genre :</label> <input type="text" id="genre" name="genre" value="${param.genre}"> 
 		<input type="submit" value="Search">
 	</form>
 	<c:if test="${not empty requestScope.BOOKS_LIST}">
