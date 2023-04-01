@@ -38,22 +38,6 @@
 				</form>
 			</c:if>
 		</div>
-		<nav>
-			<ul>
-				<li>
-					<form action="book-manager" method="post">
-						<p>
-							<c:if test="${not empty sessionScope.LOGIN_INCORRECT}"> 
-								${ sessionScope.LOGIN_INCORRECT }
-							</c:if>
-						</p>
-						<input type="text" name="username" placeholder="Username">
-						<input type="password" name="password" placeholder="Password">
-						<input type="submit" value="Login">
-					</form>
-				</li>
-			</ul>
-		</nav>
 	</header>
 	<h2>Here you can find your reservation</h2>
 	<table>

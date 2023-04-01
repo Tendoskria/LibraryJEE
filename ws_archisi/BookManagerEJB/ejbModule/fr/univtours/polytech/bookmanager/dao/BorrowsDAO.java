@@ -1,5 +1,6 @@
 package fr.univtours.polytech.bookmanager.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import fr.univtours.polytech.bookmanager.model.AppUserBean;
@@ -8,6 +9,8 @@ import fr.univtours.polytech.bookmanager.model.BorrowBean;
 
 public interface BorrowsDAO {
 	public List<BorrowBean> getBorrowsList();
+	
+	public BorrowBean getCurrentBorrowOfBook(BookBean book);
 	
 	public List<BorrowBean> getBorrowsForBook(int bookId);
 	
@@ -20,4 +23,6 @@ public interface BorrowsDAO {
 	public List<BorrowBean> getCurrentDelayedBorrowsOfUser(AppUserBean user);
 	
 	public void insertBorrow(BorrowBean borrow);
+	
+	public void updateBorrow(BorrowBean borrow);
 }

@@ -38,23 +38,30 @@
 				</form>
 			</c:if>
 		</div>
-		<nav>
-			<ul>
-				<li>
-					<form action="book-manager" method="post">
-						<p>
-							<c:if test="${not empty sessionScope.LOGIN_INCORRECT}"> 
-								${ sessionScope.LOGIN_INCORRECT }
-							</c:if>
-						</p>
-						<input type="text" name="username" placeholder="Username">
-						<input type="password" name="password" placeholder="Password">
-						<input type="submit" value="Login">
-					</form>
-				</li>
-			</ul>
-		</nav>
 	</header>
 	<h2>Here you can close a reservation</h2>
+	<c:if test="${not empty requestScope.BORROWS}">
+		<table>
+			<tr>
+				<th>Title</th>
+				<th>Author</th>
+				<th>Genre</th>
+				<th>Action</th>
+			</tr>
+			<c:forEach var="borrow" items="${requestScope.BORROWS}">
+				<tr>
+					<td>${borrow.book.bookTitle}</td>
+					<td>${borrow.book.author.firstNameAuthor} ${book.author.firstNameAuthor}</td>
+					<td>${borrow.book.genre.genreName}</td>
+					<td>
+						<form action="book-manager-admin" method="post">
+							<input type="hidden" name="idBook" value="${borrow.book.idBook}">
+							<input type="submit" value="Return">
+						</form>
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</c:if>
 </body>
 </html>

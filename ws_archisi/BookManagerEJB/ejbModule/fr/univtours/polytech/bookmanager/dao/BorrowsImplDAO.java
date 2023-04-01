@@ -12,6 +12,7 @@ import javax.persistence.Query;
 import fr.univtours.polytech.bookmanager.model.AppUserBean;
 import fr.univtours.polytech.bookmanager.model.BookBean;
 import fr.univtours.polytech.bookmanager.model.BorrowBean;
+import fr.univtours.polytech.bookmanager.model.BorrowId;
 
 @Stateless
 public class BorrowsImplDAO implements BorrowsDAO {
@@ -25,6 +26,17 @@ public class BorrowsImplDAO implements BorrowsDAO {
 		return query.getResultList();
 	}
 
+	@Override
+	public BorrowBean getCurrentBorrowOfBook(BookBean book) {
+		List<BorrowBean> borrows = getBorrowsForBook(book.getIdBook());
+		for (BorrowBean borrow : borrows) {
+			if (!isBorrowEnd(borrow)) {
+				return borrow;
+			}
+		}
+		return null;
+	}
+	
 	@Override
 	public List<BorrowBean> getBorrowsForBook(int bookId) {
 		Query query = entityManager.createQuery("SELECT b FROM BorrowBean b WHERE b.book.idBook = ?1");
@@ -115,4 +127,18 @@ public class BorrowsImplDAO implements BorrowsDAO {
 	public void insertBorrow(BorrowBean borrow) {
 		entityManager.merge(borrow);
 	}
+
+	@Override
+	public void updateBorrow(BorrowBean borrow) {
+		String hqlUpdate = "UPDATE BorrowBean b SET b.isBorrowEnd = ?1 "
+				+ "WHERE b.book.idBook = ?2 AND b.startingDate = ?3 AND b.endingDate = ?4";
+		Query query = entityManager.createQuery(hqlUpdate);
+		query.setParameter(1, true);
+		query.setParameter(2, borrow.getBook().getIdBook());
+		query.setParameter(3, borrow.getStartingDate());
+		query.setParameter(4, borrow.getEndingDate());
+		query.executeUpdate();
+	}
+	
+
 }

@@ -18,14 +18,13 @@ import fr.univtours.polytech.bookmanager.business.BooksBusinessLocal;
 import fr.univtours.polytech.bookmanager.business.BorrowsBusinessLocal;
 import fr.univtours.polytech.bookmanager.business.GenresBusinessLocal;
 import fr.univtours.polytech.bookmanager.model.AppUserBean;
-import fr.univtours.polytech.bookmanager.model.BookBean;
 import fr.univtours.polytech.bookmanager.model.BorrowBean;
 
 /**
  * Servlet implementation class UserBookServlet
  */
 @WebServlet(name = "UserBookServlet", urlPatterns = { "/book-manager-user" })
-public class UserBookServlet extends HttpServlet{
+public class UserBookServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -40,7 +39,7 @@ public class UserBookServlet extends HttpServlet{
 
 	@EJB
 	private GenresBusinessLocal genresBusinessLocal;
-	
+
 	@EJB
 	private BorrowsBusinessLocal borrowsBusinessLocal;
 
@@ -54,16 +53,16 @@ public class UserBookServlet extends HttpServlet{
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
-		if (session.getAttribute(PRIVILEGE) == "USER"){
+		if (session.getAttribute(PRIVILEGE) == "USER") {
 			String username = (String) session.getAttribute(BookServlet.getUSERNAME());
 			AppUserBean user = appUsersBusinessLocal.getAppUser(username);
-			
+
 			List<BorrowBean> currentBorrows = this.borrowsBusinessLocal.getCurrentBorrowsOfUser(user);
 			request.setAttribute("BORROWS", currentBorrows);
-			
+
 			List<BorrowBean> currentDelayedBorrows = this.borrowsBusinessLocal.getCurrentDelayedBorrowsOfUser(user);
 			request.setAttribute("DELAYED_BORROWS", currentDelayedBorrows);
-			
+
 			RequestDispatcher dispatcher = request.getRequestDispatcher("book-manager-user.jsp");
 			dispatcher.forward(request, response);
 		} else {

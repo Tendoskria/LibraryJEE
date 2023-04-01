@@ -1,5 +1,6 @@
 package fr.univtours.polytech.bookmanager.business;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -21,6 +22,11 @@ public class BorrowsBusinessImpl implements BorrowsBusinessLocal, BorrowsBusines
 		return dao.getBorrowsList();
 	}
 
+	@Override
+	public BorrowBean getCurrentBorrowOfBook(BookBean book) {
+		return dao.getCurrentBorrowOfBook(book);
+	}
+	
 	@Override
 	public List<BorrowBean> getBorrowsForBook(int bookId) {
 		return dao.getBorrowsForBook(bookId);
@@ -49,5 +55,10 @@ public class BorrowsBusinessImpl implements BorrowsBusinessLocal, BorrowsBusines
 	@Override
 	public void insertBorrow(BorrowBean borrow) {
 		dao.insertBorrow(borrow);
+	}
+	
+	@Override
+	public void updateBorrow(BorrowBean borrow) {
+		dao.updateBorrow(borrow);
 	}
 }
