@@ -1,3 +1,4 @@
+# Spécification de l'application
 Un amdinistrateur ne peut pas encore gérer le rendu d'un livre.
 
 Un utilisateur peut se connecter/déconnecter (normal ou admin).
@@ -9,10 +10,7 @@ Il peut reserver des livres jusqu'à 5 maximum.
 
 L'utilisateur peut voir ses réservations en cours et voit celle qui sont "en retard".
 
-
-
-Script d'insertion de la base de données :
-
+# Script d'insertion de la base de données :
 INSERT INTO author (FirstNameAuthor, LastNameAuthor) VALUES ('Gustave', 'Flaubert'), ('Albert', 'Camus'), ('J. K.', 'Rowling'), ('Victor', 'Hugo');
 INSERT INTO appuser (FirstNameUser, LastNameUser, privilege, login, password) VALUES ('Theo', 'Mendes', 1, 'theo.mendes', 'azertyuiop'), ('Amina', 'Ferraoun', 0, 'lilou.mendes', 'azertyuiop');
 INSERT INTO genre (GenreName) VALUES ('Roman'), ('Nouvelle');
