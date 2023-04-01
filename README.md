@@ -11,7 +11,7 @@ L'utilisateur peut voir ses réservations en cours et voit celle qui sont "en re
 Un administrateur peut gérer le rendu d'un livre et ainsi un utilisateur peut le réserver à nouveau.
 
 
-# Script d'insertion de la base de données :
+# Script d'insertion de la base de données
 ```
 INSERT INTO author (FirstNameAuthor, LastNameAuthor) VALUES ('Gustave', 'Flaubert'), ('Albert', 'Camus'), ('J. K.', 'Rowling'), ('Victor', 'Hugo');
 INSERT INTO appuser (FirstNameUser, LastNameUser, privilege, login, password) VALUES ('Theo', 'Mendes', 1, 'admin', 'password'), ('Amina', 'Ferraoun', 0, 'user', 'password');
