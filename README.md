@@ -1,6 +1,4 @@
 # Spécification de l'application
-Un administrateur ne peut pas encore gérer le rendu d'un livre.
-
 Un utilisateur peut se connecter/déconnecter (normal ou admin).
 Des sessions sont mises en place donc l'affichage de l'interface change en fonction du privilège de l'utilisateur.
 
@@ -9,6 +7,9 @@ Il peut également filtrer les résultats.
 Il peut reserver des livres jusqu'à 5 maximum au delà il .
 
 L'utilisateur peut voir ses réservations en cours et voit celle qui sont "en retard".
+
+Un administrateur ne peut pas encore gérer le rendu d'un livre.
+
 
 # Script d'insertion de la base de données :
 ```
