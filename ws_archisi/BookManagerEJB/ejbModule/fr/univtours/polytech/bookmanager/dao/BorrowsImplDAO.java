@@ -53,12 +53,11 @@ public class BorrowsImplDAO implements BorrowsDAO {
 	
 	public boolean isBorrowEnd(BorrowBean borrow) {
 		Boolean flag = false;
-		Date currentDate = new Date();
-		if (borrow.getStartingDate().before(currentDate) && borrow.getEndingDate().after(currentDate)) {
-			flag = false;
+		if (borrow.getIsBorrowEnd()) {
+			flag = true;
 		}
 		else {
-			flag = true;
+			flag = false;
 		}
 		return flag;
 	}
@@ -86,6 +85,30 @@ public class BorrowsImplDAO implements BorrowsDAO {
 			}
 		}
 		return booksAvailable;
+	}
+	
+	public Boolean isBorrowHadDelay(BorrowBean borrow) {
+		Boolean flag = false;
+		Date currentDate = new Date();
+		if (!borrow.getIsBorrowEnd() && borrow.getEndingDate().before(currentDate)) {
+			flag = true;
+		}
+		else {
+			flag = false;
+		}
+		return flag;
+	}
+	
+	@Override
+	public List<BorrowBean> getCurrentDelayedBorrowsOfUser(AppUserBean user){
+		List<BorrowBean> delayedBorrows = new ArrayList<>();
+		List<BorrowBean> borrowBeans = getCurrentBorrowsOfUser(user);
+		for (BorrowBean borrow : borrowBeans) {
+			if(isBorrowHadDelay(borrow)) {
+				delayedBorrows.add(borrow);
+			}
+		}
+		return delayedBorrows;
 	}
 	
 	@Override

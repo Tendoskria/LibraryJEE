@@ -21,6 +21,8 @@ public class BorrowBean {
 	@Id
 	private Date endingDate;
 	
+	private Boolean isBorrowEnd;
+	
 	@Id
 	@ManyToOne
 	@JoinColumn(name = "idBook")
@@ -60,5 +62,13 @@ public class BorrowBean {
 
 	public void setUser(AppUserBean user) {
 		this.user = user;
+	}
+
+	public Boolean getIsBorrowEnd() {
+		return isBorrowEnd;
+	}
+
+	public void setIsBorrowEnd(Boolean isBorrowEnd) {
+		this.isBorrowEnd = isBorrowEnd;
 	}
 }

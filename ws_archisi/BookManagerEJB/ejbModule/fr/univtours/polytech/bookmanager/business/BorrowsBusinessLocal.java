@@ -21,5 +21,7 @@ public interface BorrowsBusinessLocal {
 		
 	public List<BookBean> getBooksAvailable(List<BookBean> books);
 	
+	public List<BorrowBean> getCurrentDelayedBorrowsOfUser(AppUserBean user);
+	
 	public void insertBorrow(BorrowBean borrow);
 }

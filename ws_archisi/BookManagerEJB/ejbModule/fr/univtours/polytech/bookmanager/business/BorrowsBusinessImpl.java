@@ -42,6 +42,11 @@ public class BorrowsBusinessImpl implements BorrowsBusinessLocal, BorrowsBusines
 	}
 	
 	@Override
+	public List<BorrowBean> getCurrentDelayedBorrowsOfUser(AppUserBean user){
+		return dao.getCurrentDelayedBorrowsOfUser(user);
+	}
+	
+	@Override
 	public void insertBorrow(BorrowBean borrow) {
 		dao.insertBorrow(borrow);
 	}

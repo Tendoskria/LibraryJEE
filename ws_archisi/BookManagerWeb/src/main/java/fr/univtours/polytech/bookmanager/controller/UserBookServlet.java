@@ -61,6 +61,9 @@ public class UserBookServlet extends HttpServlet{
 			List<BorrowBean> currentBorrows = this.borrowsBusinessLocal.getCurrentBorrowsOfUser(user);
 			request.setAttribute("BORROWS", currentBorrows);
 			
+			List<BorrowBean> currentDelayedBorrows = this.borrowsBusinessLocal.getCurrentDelayedBorrowsOfUser(user);
+			request.setAttribute("DELAYED_BORROWS", currentDelayedBorrows);
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("book-manager-user.jsp");
 			dispatcher.forward(request, response);
 		} else {

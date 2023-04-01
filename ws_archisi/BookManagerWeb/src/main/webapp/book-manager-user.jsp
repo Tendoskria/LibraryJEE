@@ -66,12 +66,18 @@
 		</thead>
 		<tbody>
 			<c:if test="${not empty requestScope.BORROWS}">
-				<c:forEach items="${requestScope.BORROWS}"
-					var="borrow">
+				<c:forEach items="${requestScope.BORROWS}" var="borrow">
 					<tr>
 						<td>${borrow.getBook().getBookTitle()}</td>
 						<td>${borrow.getBook().getAuthor().getidAuthor()}</td>
-						<td>${borrow.getStartingDate()} to ${borrow.getEndingDate()}</td>
+						<td>${borrow.getStartingDate()} to ${borrow.getEndingDate()} 
+							<c:forEach items="${requestScope.DELAYED_BORROWS}"
+								var="delayedBorrow">
+								<c:if test="${borrow.getBook().getBookTitle() == delayedBorrow.getBook().getBookTitle()}">
+									<p>WARNING, YOU ARE LATE<p>
+								</c:if>
+							</c:forEach>
+						</td>
 					</tr>
 				</c:forEach>
 			</c:if>

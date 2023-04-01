@@ -133,6 +133,7 @@ public class BookServlet extends HttpServlet {
 			borrow.setStartingDate(sqlDate);
 			borrow.setEndingDate(sqlDateMoreTen);
 			borrow.setUser(user);
+			borrow.setIsBorrowEnd(false);
 			
 			borrowsBusinessLocal.insertBorrow(borrow);
 			

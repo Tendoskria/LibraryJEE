@@ -110,3 +110,8 @@ th {
 tr:hover {
   background-color: #f2f2f2;
 }
+
+tbody p {
+  color: red;
+  text-align: left;
+}
