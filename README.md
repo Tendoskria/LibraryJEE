@@ -20,3 +20,9 @@ INSERT INTO book (bookTitle, idAuthor, idGenre) VALUES ('Madame Bovary',1,1), ('
 INSERT INTO borrow (idBook, startingDate, endingDate,  idUser, isBorrowEnd) VALUE (2, '2022-06-01', '2022-06-11', 2, 0);
 INSERT INTO borrow (idBook, startingDate, endingDate, idUser, isBorrowEnd) VALUE (1, '2023-03-30', '2023-04-06', 1, 1);
 ```
+
+# Schéma de la base de données
+![Schéma de la base de donées](/assets/Schema_DDD.png)
+
+# Architecture MVC de l'application
+![Architecture MVC de l'application](/assests/Diagramme_De_Classe.png)
