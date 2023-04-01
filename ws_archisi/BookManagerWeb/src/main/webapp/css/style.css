@@ -9,6 +9,11 @@ body h2 {
 	text-align: center;
 }
 
+body h3 {
+	text-align: center;
+	color: red;
+}
+
 /* En-tête */
 header {
   background-color: #333;

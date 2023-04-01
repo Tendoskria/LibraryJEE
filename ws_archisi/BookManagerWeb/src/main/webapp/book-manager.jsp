@@ -32,7 +32,8 @@
 					<input type="submit" value="Manage">
 				</form>
 			</c:if>
-			<c:if test="${sessionScope.PRIVILEGE == 'USER' or sessionScope.PRIVILEGE == 'ADMIN'}">
+			<c:if
+				test="${sessionScope.PRIVILEGE == 'USER' or sessionScope.PRIVILEGE == 'ADMIN'}">
 				<form action="log-out-book-servlet" method="get">
 					<input type="submit" value="LogOut">
 				</form>
@@ -67,6 +68,7 @@
 			</c:forEach>
 		</select> <input type="submit" value="Search">
 	</form>
+	<h3>${requestScope.BOOK_LIMIT_WARNING}</h3>
 	<c:if test="${not empty requestScope.BOOKS_LIST}">
 		<fieldset>
 			<table>

@@ -69,7 +69,7 @@
 				<c:forEach items="${requestScope.BORROWS}" var="borrow">
 					<tr>
 						<td>${borrow.getBook().getBookTitle()}</td>
-						<td>${borrow.getBook().getAuthor().getidAuthor()}</td>
+						<td>${borrow.getBook().getAuthor().getfirstNameAuthor()} ${borrow.getBook().getAuthor().getlastNameAuthor()}</td>
 						<td>${borrow.getStartingDate()} to ${borrow.getEndingDate()} 
 							<c:forEach items="${requestScope.DELAYED_BORROWS}"
 								var="delayedBorrow">

@@ -89,6 +89,7 @@ public class BookServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		if (request.getParameter("login") != null) {
+			request.setAttribute("BOOK_LIMIT_WARNING", "");
 			AppUserBean user = new AppUserBean();
 			user.setLogin(request.getParameter("username"));
 			user.setPassword(request.getParameter("password"));
@@ -118,26 +119,38 @@ public class BookServlet extends HttpServlet {
 			BookBean book = booksBusinessLocal.getBook(Integer.valueOf(request.getParameter("borrow")));
 			String username = (String) session.getAttribute(getUSERNAME());
 			AppUserBean user = appUsersBusinessLocal.getAppUser(username);
-						
-			BorrowBean borrow = new BorrowBean();
-			Date currentDate = new Date();
-			Calendar calendar = Calendar.getInstance();
-			calendar.setTime(currentDate);
-			calendar.add(Calendar.DATE, 10);
-			Date currentDateMoreTen = calendar.getTime();
-
-			java.sql.Date sqlDate = new java.sql.Date(currentDate.getTime());
-			java.sql.Date sqlDateMoreTen = new java.sql.Date(currentDateMoreTen.getTime());
 			
-			borrow.setBook(book);
-			borrow.setStartingDate(sqlDate);
-			borrow.setEndingDate(sqlDateMoreTen);
-			borrow.setUser(user);
-			borrow.setIsBorrowEnd(false);
+			if (this.borrowsBusinessLocal.getCurrentBorrowsOfUser(user).size() < 5) {
+				request.setAttribute("BOOK_LIMIT_WARNING", "");
+				BorrowBean borrow = new BorrowBean();
+				Date currentDate = new Date();
+				Calendar calendar = Calendar.getInstance();
+				calendar.setTime(currentDate);
+				calendar.add(Calendar.DATE, 10);
+				Date currentDateMoreTen = calendar.getTime();
+	
+				java.sql.Date sqlDate = new java.sql.Date(currentDate.getTime());
+				java.sql.Date sqlDateMoreTen = new java.sql.Date(currentDateMoreTen.getTime());
+				
+				borrow.setBook(book);
+				borrow.setStartingDate(sqlDate);
+				borrow.setEndingDate(sqlDateMoreTen);
+				borrow.setUser(user);
+				borrow.setIsBorrowEnd(false);
+				
+				borrowsBusinessLocal.insertBorrow(borrow);
+				
+				response.sendRedirect("book-manager-user");
+			}
+			String message = "You can not borrow more than 5 books";
+			request.setAttribute("BOOK_LIMIT_WARNING", message);
 			
-			borrowsBusinessLocal.insertBorrow(borrow);
-			
-			response.sendRedirect("book-manager-user");
+			List<BookBean> books = this.booksBusinessLocal.getBooksList();
+			request.setAttribute("BOOKS_LIST", books);
+			List<BookBean> booksAvailable = this.borrowsBusinessLocal.getBooksAvailable(books);
+			request.setAttribute("BOOKS_AVAILABLE", booksAvailable);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("book-manager.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 
