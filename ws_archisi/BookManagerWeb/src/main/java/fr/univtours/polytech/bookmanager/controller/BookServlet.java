@@ -60,13 +60,13 @@ public class BookServlet extends HttpServlet {
 		String titleFilter = request.getParameter("title");
 		String authorFilter = request.getParameter("author");
 		String genreFilter = request.getParameter("genre");
-
+		
 		List<GenreBean> genres = this.genresBusinessLocal.getGenresList();
 		request.setAttribute("GENRES_LIST", genres);
 
 		// If every filters fields empty means that there is no research. Consequently,
 		// show every book in base.
-		if (titleFilter == null && authorFilter == null && genreFilter == null) {
+		if (titleFilter == null && authorFilter == null && genreFilter == null){
 			List<BookBean> books = this.booksBusinessLocal.getBooksList();
 			request.setAttribute("BOOKS_LIST", books);
 
