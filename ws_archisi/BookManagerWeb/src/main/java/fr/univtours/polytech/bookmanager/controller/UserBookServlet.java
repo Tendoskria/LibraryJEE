@@ -1,6 +1,7 @@
 package fr.univtours.polytech.bookmanager.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -14,7 +15,11 @@ import javax.servlet.http.HttpSession;
 import fr.univtours.polytech.bookmanager.business.AppUsersBusinessLocal;
 import fr.univtours.polytech.bookmanager.business.AuthorsBusinessLocal;
 import fr.univtours.polytech.bookmanager.business.BooksBusinessLocal;
+import fr.univtours.polytech.bookmanager.business.BorrowsBusinessLocal;
 import fr.univtours.polytech.bookmanager.business.GenresBusinessLocal;
+import fr.univtours.polytech.bookmanager.model.AppUserBean;
+import fr.univtours.polytech.bookmanager.model.BookBean;
+import fr.univtours.polytech.bookmanager.model.BorrowBean;
 
 /**
  * Servlet implementation class UserBookServlet
@@ -35,6 +40,9 @@ public class UserBookServlet extends HttpServlet{
 
 	@EJB
 	private GenresBusinessLocal genresBusinessLocal;
+	
+	@EJB
+	private BorrowsBusinessLocal borrowsBusinessLocal;
 
 	private static String PRIVILEGE = "PRIVILEGE";
 
@@ -47,6 +55,12 @@ public class UserBookServlet extends HttpServlet{
 		HttpSession session = request.getSession();
 
 		if (session.getAttribute(PRIVILEGE) == "USER"){
+			String username = (String) session.getAttribute(BookServlet.getUSERNAME());
+			AppUserBean user = appUsersBusinessLocal.getAppUser(username);
+			
+			List<BorrowBean> currentBorrows = this.borrowsBusinessLocal.getCurrentBorrowsOfUser(user);
+			request.setAttribute("BORROWS", currentBorrows);
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("book-manager-user.jsp");
 			dispatcher.forward(request, response);
 		} else {

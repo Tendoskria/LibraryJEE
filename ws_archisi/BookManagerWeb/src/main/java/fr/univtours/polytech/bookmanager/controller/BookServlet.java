@@ -70,13 +70,13 @@ public class BookServlet extends HttpServlet {
 			List<BookBean> books = this.booksBusinessLocal.getBooksList();
 			request.setAttribute("BOOKS_LIST", books);
 
-			List<BookBean> booksAvailable = this.borrowsBusinessLocal.getBooksAvailable();
+			List<BookBean> booksAvailable = this.borrowsBusinessLocal.getBooksAvailable(books);
 			request.setAttribute("BOOKS_AVAILABLE", booksAvailable);
 		} else {
 			List<BookBean> books = this.booksBusinessLocal.getFilteredBook(titleFilter, authorFilter, genreFilter);
 			request.setAttribute("BOOKS_LIST", books);
 
-			List<BookBean> booksAvailable = this.borrowsBusinessLocal.getBooksAvailable();
+			List<BookBean> booksAvailable = this.borrowsBusinessLocal.getBooksAvailable(books);
 			request.setAttribute("BOOKS_AVAILABLE", booksAvailable);
 		}
 
@@ -95,7 +95,7 @@ public class BookServlet extends HttpServlet {
 
 			if (appUsersBusinessLocal.getAppUserIfExist(user.getLogin(), user.getPassword()) != null) {
 				String username = request.getParameter("username");
-				session.setAttribute(USERNAME, username);
+				session.setAttribute(getUSERNAME(), username);
 				session.setAttribute(LOGIN_INCORRECT, "");
 				user = appUsersBusinessLocal.getAppUser(username);
 				if (user.getPrivilege() == true)
@@ -116,7 +116,7 @@ public class BookServlet extends HttpServlet {
 		
 		if (request.getParameter("borrow") != null){
 			BookBean book = booksBusinessLocal.getBook(Integer.valueOf(request.getParameter("borrow")));
-			String username = (String) session.getAttribute(USERNAME);
+			String username = (String) session.getAttribute(getUSERNAME());
 			AppUserBean user = appUsersBusinessLocal.getAppUser(username);
 						
 			BorrowBean borrow = new BorrowBean();
@@ -138,5 +138,13 @@ public class BookServlet extends HttpServlet {
 			
 			response.sendRedirect("book-manager-user");
 		}
+	}
+
+	public static String getUSERNAME() {
+		return USERNAME;
+	}
+
+	public static void setUSERNAME(String uSERNAME) {
+		USERNAME = uSERNAME;
 	}
 }

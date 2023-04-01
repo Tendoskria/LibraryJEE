@@ -32,8 +32,18 @@ public class BorrowsBusinessImpl implements BorrowsBusinessLocal, BorrowsBusines
 	}
 	
 	@Override
-	public List<BookBean> getBooksAvailable(){
-		return dao.getBooksAvailable();
+	public List<BorrowBean> getBorrowsOfUser(AppUserBean user) {
+		return dao.getBorrowsOfUser(user);
+	}
+	
+	@Override	
+	public List<BorrowBean> getCurrentBorrowsOfUser(AppUserBean user){
+		return dao.getCurrentBorrowsOfUser(user);
+	}
+	
+	@Override
+	public List<BookBean> getBooksAvailable(List<BookBean> books){
+		return dao.getBooksAvailable(books);
 	}
 	
 	@Override

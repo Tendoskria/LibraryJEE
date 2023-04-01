@@ -11,9 +11,13 @@ public interface BorrowsBusinessRemote {
 
 	public List<BorrowBean> getBorrowsForBook(int bookId);
 
+	public List<BorrowBean> getBorrowsOfUser(AppUserBean user);
+	
+	public List<BorrowBean> getCurrentBorrowsOfUser(AppUserBean user);
+	
 	public boolean isBookAvailable(BookBean book);
 	
-	public List<BookBean> getBooksAvailable();
+	public List<BookBean> getBooksAvailable(List<BookBean> books);
 	
 	public void insertBorrow(BorrowBean borrow);
 }

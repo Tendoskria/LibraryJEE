@@ -84,9 +84,6 @@
 							<td>${(book.author.firstNameAuthor)}
 								${(book.author.lastNameAuthor)}</td>
 							<td>${(book.genre.genreName)}</td>
-							<c:if test="${empty requestScope.BOOKS_AVAILABLE}">
-									<td>No</td>
-								</c:if>
 							<c:forEach items="${requestScope.BOOKS_AVAILABLE}"
 								var="bookAvailable">
 								<c:if test="${bookAvailable.idBook == book.idBook}">
@@ -94,15 +91,14 @@
 									<c:if test="${sessionScope.PRIVILEGE == 'USER'}">
 										<td>
 											<form action="book-manager" method="post">
-												<input type="hidden" name="borrow" value="${bookAvailable.idBook}"/>
-												<input type="submit" value="Borrow"/>
+												<input type="hidden" name="borrow"
+													value="${bookAvailable.idBook}" /> <input type="submit"
+													value="Borrow" />
 											</form>
 										</td>
 									</c:if>
 								</c:if>
-								<c:if test="${bookAvailable.idBook != book.idBook}">
-									<td>No</td>
-								</c:if>
+
 							</c:forEach>
 						</tr>
 					</c:forEach>

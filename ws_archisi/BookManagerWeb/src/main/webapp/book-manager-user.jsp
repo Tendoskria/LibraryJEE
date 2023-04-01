@@ -56,5 +56,25 @@
 		</nav>
 	</header>
 	<h2>Here you can find your reservation</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Author</th>
+				<th>Borrow date</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:if test="${not empty requestScope.BORROWS}">
+				<c:forEach items="${requestScope.BORROWS}"
+					var="borrow">
+					<tr>
+						<td>${borrow.getBook().getBookTitle()}</td>
+						<td>${borrow.getBook().getAuthor().getidAuthor()}</td>
+					</tr>
+				</c:forEach>
+			</c:if>
+		</tbody>
+	</table>
 </body>
 </html>
