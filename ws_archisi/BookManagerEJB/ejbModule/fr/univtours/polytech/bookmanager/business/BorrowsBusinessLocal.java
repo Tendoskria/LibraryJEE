@@ -18,9 +18,7 @@ public interface BorrowsBusinessLocal {
 	public List<BorrowBean> getBorrowsOfUser(AppUserBean user);
 
 	public List<BorrowBean> getCurrentBorrowsOfUser(AppUserBean user);
-	
-	public boolean isBookAvailable(BookBean book);
-	
+		
 	public List<BookBean> getBooksAvailable(List<BookBean> books);
 	
 	public void insertBorrow(BorrowBean borrow);

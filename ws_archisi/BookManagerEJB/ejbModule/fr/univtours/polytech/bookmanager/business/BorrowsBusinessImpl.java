@@ -15,11 +15,6 @@ public class BorrowsBusinessImpl implements BorrowsBusinessLocal, BorrowsBusines
 
 	@Inject
 	private BorrowsDAO dao;
-	
-	@Override
-	public boolean isBookAvailable(BookBean book) {
-		return dao.isBookAvailable(book);
-	}
 
 	@Override
 	public List<BorrowBean> getBorrowsList() {

@@ -16,8 +16,6 @@ public interface BorrowsDAO {
 	public List<BorrowBean> getCurrentBorrowsOfUser(AppUserBean user);
 	
 	public List<BookBean> getBooksAvailable(List<BookBean> books);
-	
-	public boolean isBookAvailable(BookBean book);
-	
+		
 	public void insertBorrow(BorrowBean borrow);
 }

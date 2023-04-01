@@ -32,7 +32,7 @@
 					<input type="submit" value="Manage">
 				</form>
 			</c:if>
-			<c:if test="${sessionScope.PRIVILEGE == 'USER' }">
+			<c:if test="${sessionScope.PRIVILEGE == 'USER' or sessionScope.PRIVILEGE == 'ADMIN'}">
 				<form action="log-out-book-servlet" method="get">
 					<input type="submit" value="LogOut">
 				</form>

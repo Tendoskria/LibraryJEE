@@ -71,6 +71,7 @@
 					<tr>
 						<td>${borrow.getBook().getBookTitle()}</td>
 						<td>${borrow.getBook().getAuthor().getidAuthor()}</td>
+						<td>${borrow.getStartingDate()} to ${borrow.getEndingDate()}</td>
 					</tr>
 				</c:forEach>
 			</c:if>

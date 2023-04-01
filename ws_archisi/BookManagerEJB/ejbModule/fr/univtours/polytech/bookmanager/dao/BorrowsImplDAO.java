@@ -42,33 +42,36 @@ public class BorrowsImplDAO implements BorrowsDAO {
 	@Override
 	public List<BorrowBean> getCurrentBorrowsOfUser(AppUserBean user) {
 		List<BorrowBean> currentBorrows = new ArrayList<>();
-		List<BookBean> currentBookBorrows = new ArrayList<>();
 		List<BorrowBean> borrowBeans = getBorrowsOfUser(user);
 		for (BorrowBean borrow : borrowBeans) {
-			if(!isBookAvailable(borrow.getBook()) && !currentBookBorrows.contains(borrow.getBook())) {
+			if(!isBorrowEnd(borrow)) {
 				currentBorrows.add(borrow);
-				currentBookBorrows.add(borrow.getBook());
 			}
 		}
 		return currentBorrows;
 	}
 	
-	@Override
+	public boolean isBorrowEnd(BorrowBean borrow) {
+		Boolean flag = false;
+		Date currentDate = new Date();
+		if (borrow.getStartingDate().before(currentDate) && borrow.getEndingDate().after(currentDate)) {
+			flag = false;
+		}
+		else {
+			flag = true;
+		}
+		return flag;
+	}
+	
 	public boolean isBookAvailable(BookBean book) {
 		Boolean flag = false;		
 		if (book != null) {
-			Date currentDate = new Date();
 			List<BorrowBean> borrows = getBorrowsForBook(book.getIdBook());
 			if(borrows.size() == 0) {
 				flag = true;
 			}
 			for (BorrowBean borrow : borrows) {
-				if (borrow.getStartingDate().before(currentDate) && borrow.getEndingDate().after(currentDate)) {
-					flag = false;
-				}
-				else {
-					flag = true;
-				}
+				flag = isBorrowEnd(borrow);
 			}
 		}
 		return flag;
