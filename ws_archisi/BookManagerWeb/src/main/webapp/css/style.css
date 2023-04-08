@@ -1,43 +1,52 @@
 /* Mise en page générale */
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+	margin: 0;
+	font-family: Arial, sans-serif;
+	background-color: #f2f2f2;
 }
 
 body h2 {
 	text-align: center;
+	margin: 20px 0;
 }
 
 body h3 {
 	text-align: center;
 	color: red;
+	margin: 20px 0;
 }
 
 /* En-tête */
 header {
-  background-color: #333;
-  color: white;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+	background-color: #333;
+	color: white;
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 nav ul {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 nav li {
-  margin: 0 10px;
+	margin: 0 10px;
 }
 
 nav a {
-  color: white;
-  text-decoration: none;
+	color: white;
+	text-decoration: none;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+nav a:hover {
+	background-color: white;
+	color: #333;
 }
 
 nav p {
@@ -45,78 +54,106 @@ nav p {
 	text-decoration: none;
 	padding-right: 10px;
 }
+
 .tabs {
-  margin: 0 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	margin: 0 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-.tabs a{
-  text-decoration: none;
-  padding-right: 10px;
+.tabs a {
+	text-decoration: none;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.tabs a:hover {
+	background-color: white;
+	color: #333;
 }
 
 /* Formulaire de recherche */
 form {
-  margin: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+	margin: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
-form input[type="text"],
-form input[type="password"],
-form input[type="submit"] {
-  padding: 10px;
-  margin: 10px;
-  border: none;
-  border-radius: 5px;
+form input[type="text"], form input[type="password"], form input[type="submit"] {
+	padding: 10px;
+	margin: 10px;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form input[type="text"], form input[type="password"] {
+	width: 300px;
+	max-width: 100%;
 }
 
 form input[type="submit"] {
-  background-color: #333;
-  color: white;
-  cursor: pointer;
+	background-color: #333;
+	color: white;
+	cursor: pointer;
+	transition: background-color 0.2s ease-in-out;
+}
+
+form input[type="submit"]:hover {
+	background-color: #4c4c4c;
 }
 
 form label {
+	padding: 10px;
+	margin: 10px;
+	border: none;
+	border-radius: 5px;
+}
+
+form select {
   padding: 10px;
   margin: 10px;
   border: none;
   border-radius: 5px;
+  width: 100%;
+  max-width: 200px;
 }
 
 /* Tableau des résultats */
 fieldset {
-  margin: 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	margin: 20px;
+	border: none;
+	border-radius: 5px;
+	background-color: white;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 table {
-  width: 100%;
-  border-collapse: collapse;
+	width: 100%;
+	border-collapse: collapse;
 }
 
 th, td {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
+	padding: 10px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
 }
 
 th {
-  background-color: #333;
-  color: white;
+	background-color: #333;
+	color: white;
 }
 
 tr:hover {
-  background-color: #f2f2f2;
+	background-color: #f2f2f2;
 }
 
 tbody p {
-  color: red;
-  text-align: left;
+	color: red;
+	text-align: left;
+	margin: 0;
+	padding: 10px;
+	border-radius: 5px;
 }

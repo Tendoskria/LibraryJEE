@@ -10,6 +10,12 @@ L'utilisateur peut voir ses réservations en cours et voit celle qui sont "en re
 
 Un administrateur peut gérer le rendu d'un livre et ainsi un utilisateur peut le réserver à nouveau.
 
+### Lien pour accéder à la page d'acceuil
+http://localhost:8080/BookManagerWeb/ ou http://localhost:8080/BookManagerWeb/book-manager
+
+Les autres pages (Compte utilisateur, Compte administrateur) ne sont pas directement accessible c'est à dire que l'on ne peut pas y accéder tant que l'on est pas connecté. Toutes fois, voici leurs liens respectifs. 
+
+http://localhost:8080/BookManagerWeb/book-manager-user et http://localhost:8080/BookManagerWeb/book-manager-admin
 
 # Script d'insertion de la base de données
 ```
@@ -25,4 +31,4 @@ INSERT INTO borrow (idBook, startingDate, endingDate, idUser, isBorrowEnd) VALUE
 ![Schéma de la base de donées](/assets/Schema_DDD.png)
 
 # Architecture MVC de l'application
-![Architecture MVC de l'application](/assests/Diagramme_De_Classe.png)
+![Architecture MVC de l'application](/assets/Diagramme_De_Classe.png)
